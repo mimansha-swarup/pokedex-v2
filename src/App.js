@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import localPalette from './theme/palette';
+import { useObserver } from "mobx-react";
+import HomePage from './pages/HomePage';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+ 
+ return useObserver(() =>( 
+    <Router>
+      <div style={{overflow:"hidden",color:localPalette.common.black}}>
+        {/* <ScrollToTop/> */}
+        <Routes>
+          <Route  path="/" element={<HomePage/>} />
+        </Routes>
+
+
+      
+     
+      </div>
+    </Router>
+  ));
 }
 
 export default App;
